@@ -18,7 +18,7 @@ namespace is_site_up
                 isSiteUp = true;
                 response.Close();
             }
-            catch (Exception e)
+            catch
             {
                 isSiteUp = false;
             }

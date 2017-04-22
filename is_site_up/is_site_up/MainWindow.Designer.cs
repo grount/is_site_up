@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.urlTextBox = new System.Windows.Forms.TextBox();
-            this.siteUrlLabel = new System.Windows.Forms.Label();
             this.addUrlButton = new System.Windows.Forms.ToolStripButton();
             this.settingsButton = new System.Windows.Forms.ToolStripButton();
             this.checkButton = new System.Windows.Forms.ToolStripButton();
+            this.urlTextBox = new System.Windows.Forms.TextBox();
+            this.siteUrlLabel = new System.Windows.Forms.Label();
             this.statusButton = new System.Windows.Forms.Button();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -52,23 +52,6 @@
             this.toolStrip.Size = new System.Drawing.Size(473, 58);
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip";
-            // 
-            // urlTextBox
-            // 
-            this.urlTextBox.Location = new System.Drawing.Point(56, 79);
-            this.urlTextBox.Name = "urlTextBox";
-            this.urlTextBox.ReadOnly = true;
-            this.urlTextBox.Size = new System.Drawing.Size(377, 20);
-            this.urlTextBox.TabIndex = 1;
-            // 
-            // siteUrlLabel
-            // 
-            this.siteUrlLabel.AutoSize = true;
-            this.siteUrlLabel.Location = new System.Drawing.Point(3, 82);
-            this.siteUrlLabel.Name = "siteUrlLabel";
-            this.siteUrlLabel.Size = new System.Drawing.Size(50, 13);
-            this.siteUrlLabel.TabIndex = 2;
-            this.siteUrlLabel.Text = "Site URL";
             // 
             // addUrlButton
             // 
@@ -93,6 +76,7 @@
             this.settingsButton.Size = new System.Drawing.Size(50, 55);
             this.settingsButton.Text = "Settings";
             this.settingsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // checkButton
             // 
@@ -106,6 +90,23 @@
             this.checkButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.checkButton.ToolTipText = "Check Site";
             this.checkButton.Click += new System.EventHandler(this.checkButton_Click);
+            // 
+            // urlTextBox
+            // 
+            this.urlTextBox.Location = new System.Drawing.Point(56, 79);
+            this.urlTextBox.Name = "urlTextBox";
+            this.urlTextBox.ReadOnly = true;
+            this.urlTextBox.Size = new System.Drawing.Size(377, 20);
+            this.urlTextBox.TabIndex = 1;
+            // 
+            // siteUrlLabel
+            // 
+            this.siteUrlLabel.AutoSize = true;
+            this.siteUrlLabel.Location = new System.Drawing.Point(3, 82);
+            this.siteUrlLabel.Name = "siteUrlLabel";
+            this.siteUrlLabel.Size = new System.Drawing.Size(50, 13);
+            this.siteUrlLabel.TabIndex = 2;
+            this.siteUrlLabel.Text = "Site URL";
             // 
             // statusButton
             // 

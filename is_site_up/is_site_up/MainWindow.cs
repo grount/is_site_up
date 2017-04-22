@@ -14,14 +14,15 @@ namespace is_site_up
     {
         private string m_Url;
         private bool m_IsUrlSelected;
-        private UrlCheck urlCheck;
+        private UrlCheck m_urlCheck;
+        private SettingsForm m_settingsForm;
 
         public MainWindow()
         {
             InitializeComponent();
             m_IsUrlSelected = false;
-            urlCheck = new UrlCheck();
-
+            m_urlCheck = new UrlCheck();
+            m_settingsForm = new SettingsForm();
             this.ActiveControl = siteUrlLabel;
         }
 
@@ -35,7 +36,7 @@ namespace is_site_up
             {
                 m_Url = urlForm.m_Url;
                 urlTextBox.Text = m_Url;
-                urlCheck.m_Url = m_Url;
+                m_urlCheck.m_Url = m_Url;
             }
 
         }
@@ -44,11 +45,16 @@ namespace is_site_up
         {
             if (m_IsUrlSelected)
             {
-                bool isSiteUp = urlCheck.CheckIfSiteIsUp();
+                bool isSiteUp = m_urlCheck.CheckIfSiteIsUp();
 
                 statusButton.BackColor = isSiteUp ? Color.GreenYellow : Color.Red;
 
             }
+        }
+
+        private void settingsButton_Click(object sender, EventArgs e)
+        {
+            m_settingsForm.ShowDialog();
         }
     }
 }
