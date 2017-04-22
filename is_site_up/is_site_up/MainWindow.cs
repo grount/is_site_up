@@ -14,11 +14,15 @@ namespace is_site_up
     {
         private string m_Url;
         private bool m_IsUrlSelected;
+        private UrlCheck urlCheck;
 
         public MainWindow()
         {
             InitializeComponent();
             m_IsUrlSelected = false;
+            urlCheck = new UrlCheck();
+
+            this.ActiveControl = siteUrlLabel;
         }
 
         private void addUrlButton_Click(object sender, EventArgs e)
@@ -31,8 +35,20 @@ namespace is_site_up
             {
                 m_Url = urlForm.m_Url;
                 urlTextBox.Text = m_Url;
+                urlCheck.m_Url = m_Url;
             }
 
+        }
+
+        private void checkButton_Click(object sender, EventArgs e)
+        {
+            if (m_IsUrlSelected)
+            {
+                bool isSiteUp = urlCheck.CheckIfSiteIsUp();
+
+                statusButton.BackColor = isSiteUp ? Color.GreenYellow : Color.Red;
+
+            }
         }
     }
 }

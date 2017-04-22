@@ -64,6 +64,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
+    <Compile Include="UrlCheck.cs" />
     <EmbeddedResource Include="AddUrlForm.resx">
       <DependentUpon>AddUrlForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -101,6 +102,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\magnifyingglass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
