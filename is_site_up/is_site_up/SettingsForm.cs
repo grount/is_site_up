@@ -12,9 +12,18 @@ namespace is_site_up
 {
     public partial class SettingsForm : Form
     {
+        public int m_retrySeconds { get; set; }
+
         public SettingsForm()
         {
             InitializeComponent();
+            m_retrySeconds = 10;
+        }
+
+        private void retrySecondsTrackBar_ValueChanged(object sender, EventArgs e)
+        { 
+            displayTrackBarLabel.Text = retrySecondsTrackBar.Value.ToString();
+            m_retrySeconds = retrySecondsTrackBar.Value;
         }
     }
 }

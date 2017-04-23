@@ -14,7 +14,7 @@ namespace is_site_up
 
             try
             {
-                HttpWebResponse response = (HttpWebResponse) request.GetResponse();
+                HttpWebResponse response = (HttpWebResponse) request.GetResponse(); // TODO https://www.crackisgood.com stuck
                 isSiteUp = true;
                 response.Close();
             }

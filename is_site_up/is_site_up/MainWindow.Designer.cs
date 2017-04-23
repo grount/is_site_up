@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.addUrlButton = new System.Windows.Forms.ToolStripButton();
@@ -36,7 +37,13 @@
             this.urlTextBox = new System.Windows.Forms.TextBox();
             this.siteUrlLabel = new System.Windows.Forms.Label();
             this.statusButton = new System.Windows.Forms.Button();
+            this.loopCheckBox = new System.Windows.Forms.CheckBox();
+            this.retryTimer = new System.Windows.Forms.Timer(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripRetryLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.retryLabel = new System.Windows.Forms.Label();
             this.toolStrip.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
@@ -117,12 +124,54 @@
             this.statusButton.TabIndex = 4;
             this.statusButton.UseVisualStyleBackColor = true;
             // 
+            // loopCheckBox
+            // 
+            this.loopCheckBox.AutoSize = true;
+            this.loopCheckBox.Location = new System.Drawing.Point(12, 105);
+            this.loopCheckBox.Name = "loopCheckBox";
+            this.loopCheckBox.Size = new System.Drawing.Size(50, 17);
+            this.loopCheckBox.TabIndex = 5;
+            this.loopCheckBox.Text = "Loop";
+            this.loopCheckBox.UseVisualStyleBackColor = true;
+            this.loopCheckBox.CheckedChanged += new System.EventHandler(this.loopCheckBox_CheckedChanged);
+            // 
+            // retryTimer
+            // 
+            this.retryTimer.Interval = 30;
+            this.retryTimer.Tick += new System.EventHandler(this.retryTimer_Tick);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripRetryLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 185);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(473, 22);
+            this.statusStrip1.TabIndex = 7;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripRetryLabel
+            // 
+            this.toolStripRetryLabel.Name = "toolStripRetryLabel";
+            this.toolStripRetryLabel.Size = new System.Drawing.Size(0, 17);
+            // 
+            // retryLabel
+            // 
+            this.retryLabel.AutoSize = true;
+            this.retryLabel.Location = new System.Drawing.Point(108, 143);
+            this.retryLabel.Name = "retryLabel";
+            this.retryLabel.Size = new System.Drawing.Size(0, 13);
+            this.retryLabel.TabIndex = 6;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
             this.ClientSize = new System.Drawing.Size(473, 207);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.retryLabel);
+            this.Controls.Add(this.loopCheckBox);
             this.Controls.Add(this.statusButton);
             this.Controls.Add(this.siteUrlLabel);
             this.Controls.Add(this.urlTextBox);
@@ -133,6 +182,8 @@
             this.Text = "Is Site Up";
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,6 +198,11 @@
         private System.Windows.Forms.Label siteUrlLabel;
         private System.Windows.Forms.ToolStripButton checkButton;
         private System.Windows.Forms.Button statusButton;
+        private System.Windows.Forms.CheckBox loopCheckBox;
+        private System.Windows.Forms.Timer retryTimer;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripRetryLabel;
+        private System.Windows.Forms.Label retryLabel;
     }
 }
 
