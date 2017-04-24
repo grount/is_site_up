@@ -14,23 +14,26 @@ namespace is_site_up
 {
     public partial class MainWindow : Form
     {
-        private  string m_Url;
-        private  bool m_IsUrlSelected;
-        private  UrlCheck m_urlCheck;
-        private SettingsForm m_settingsForm;
-        private int m_retrySeconds;
-        private bool m_isLoopClicked;
-        private int m_index;
+        private string m_Url;
+        private bool m_IsUrlSelected;
+        private readonly UrlCheck m_UrlCheck;
+        private readonly SettingsForm m_SettingsForm;
+        private readonly int m_RetrySeconds;
+        private bool m_IsLoopClicked;
+        private readonly bool m_IsSiteUp;
+        private readonly Email m_email;
 
         public MainWindow()
         {
             InitializeComponent();
             m_IsUrlSelected = false;
-            m_urlCheck = new UrlCheck();
-            m_settingsForm = new SettingsForm();
+            m_UrlCheck = new UrlCheck();
+            m_SettingsForm = new SettingsForm();
             ActiveControl = siteUrlLabel;
-            m_retrySeconds = m_settingsForm.m_retrySeconds;
-            m_isLoopClicked = loopCheckBox.Checked;
+            m_RetrySeconds = m_SettingsForm.m_retrySeconds;
+            m_IsLoopClicked = loopCheckBox.Checked;
+            m_IsSiteUp = false;
+            m_email = new Email(m_SettingsForm.m_EmailAddress);
         }
 
         private void addUrlButton_Click(object sender, EventArgs e)
@@ -43,44 +46,40 @@ namespace is_site_up
             {
                 m_Url = urlForm.m_Url;
                 urlTextBox.Text = m_Url;
-                m_urlCheck.m_Url = m_Url;
+                m_UrlCheck.m_Url = m_Url;
             }
-
         }
 
-        private void checkButton_Click(object sender, EventArgs e)
+        private async void checkButton_Click(object sender, EventArgs e)
         {
             checkTheSite();
-            
+            loopCheckBox.Enabled = !m_IsSiteUp;
+
+            if (m_IsLoopClicked)
+            {
+                await updateRetryTimeLeftAsync();
+            }
         }
 
         private void checkTheSite()
         {
             if (m_IsUrlSelected)
             {
-                bool isSiteUp = m_urlCheck.CheckIfSiteIsUp();
+                bool isSiteUp = m_UrlCheck.CheckIfSiteIsUp();
 
                 statusButton.BackColor = isSiteUp ? Color.GreenYellow : Color.Red;
-
             }
         }
 
         private void settingsButton_Click(object sender, EventArgs e)
         {
-            m_settingsForm.ShowDialog();
+            m_SettingsForm.ShowDialog();
         }
 
-        private async void loopCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void loopCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            m_isLoopClicked = loopCheckBox.Checked;
-
-            if (m_isLoopClicked)
-            {
-                toolStripRetryLabel.Text = "Time remaining untill refresh: ";
-                retryTimer.Interval = m_retrySeconds * 1000;
-                retryTimer.Enabled = true;
-                await updateRetryTimeLeftAsync();
-            }
+            m_IsLoopClicked = loopCheckBox.Checked;
+            emailButton.Enabled = true;
         }
 
         private Task updateRetryTimeLeftAsync()
@@ -90,21 +89,26 @@ namespace is_site_up
 
         private async void updateRetryTimeLeft()
         {
-            for (int m_index = m_retrySeconds; m_index >= 0; m_index--)
+            for (int i = m_RetrySeconds; i >= 0; i--)
             {
                 if (retryLabel.InvokeRequired)
                 {
-                    int time = m_index;
+                    int time = i;
                     await Task.Delay(TimeSpan.FromSeconds(1));
                     retryLabel.BeginInvoke((MethodInvoker) delegate()
                     {
                         toolStripRetryLabel.Text =
                         $"Time remaining untill refresh: {time}";
                     });
+
+                    if (i == 0)
+                    {
+                        retryLoopChecking();
+                    }
                 }
                 else
                 {
-                    retryLabel.Text = m_index.ToString();
+                    retryLabel.Text = i.ToString();
                 }
             }
             retryLabel.BeginInvoke((MethodInvoker) delegate()
@@ -113,14 +117,19 @@ namespace is_site_up
             });
         }
 
-        private async void retryTimer_Tick(object sender, EventArgs e)
+        private async void retryLoopChecking()
         {
-            if (m_index == 0)
+            checkTheSite();
+
+            if (!m_IsSiteUp)
             {
-                await Task.Delay(TimeSpan.FromSeconds(1));
-                checkTheSite();
                 await updateRetryTimeLeftAsync();
             }
+            else // TOOD notify via email
+            {
+                
+            }
+        
         }
     }
 }

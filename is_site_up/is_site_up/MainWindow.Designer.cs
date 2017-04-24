@@ -28,22 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.addUrlButton = new System.Windows.Forms.ToolStripButton();
-            this.settingsButton = new System.Windows.Forms.ToolStripButton();
-            this.checkButton = new System.Windows.Forms.ToolStripButton();
             this.urlTextBox = new System.Windows.Forms.TextBox();
             this.siteUrlLabel = new System.Windows.Forms.Label();
             this.statusButton = new System.Windows.Forms.Button();
             this.loopCheckBox = new System.Windows.Forms.CheckBox();
-            this.retryTimer = new System.Windows.Forms.Timer(this.components);
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripRetryLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.retryLabel = new System.Windows.Forms.Label();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripRetryLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.addUrlButton = new System.Windows.Forms.ToolStripButton();
+            this.settingsButton = new System.Windows.Forms.ToolStripButton();
+            this.checkButton = new System.Windows.Forms.ToolStripButton();
+            this.emailButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
@@ -52,51 +51,14 @@
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addUrlButton,
             this.settingsButton,
-            this.checkButton});
+            this.checkButton,
+            this.emailButton});
             this.toolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(473, 58);
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip";
-            // 
-            // addUrlButton
-            // 
-            this.addUrlButton.AutoSize = false;
-            this.addUrlButton.Image = ((System.Drawing.Image)(resources.GetObject("addUrlButton.Image")));
-            this.addUrlButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.addUrlButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.addUrlButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.addUrlButton.Name = "addUrlButton";
-            this.addUrlButton.Size = new System.Drawing.Size(50, 55);
-            this.addUrlButton.Text = "Add URL";
-            this.addUrlButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.addUrlButton.Click += new System.EventHandler(this.addUrlButton_Click);
-            // 
-            // settingsButton
-            // 
-            this.settingsButton.AutoSize = false;
-            this.settingsButton.Image = ((System.Drawing.Image)(resources.GetObject("settingsButton.Image")));
-            this.settingsButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.settingsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(50, 55);
-            this.settingsButton.Text = "Settings";
-            this.settingsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
-            // 
-            // checkButton
-            // 
-            this.checkButton.AutoSize = false;
-            this.checkButton.Image = global::is_site_up.Resource.check;
-            this.checkButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.checkButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.checkButton.Name = "checkButton";
-            this.checkButton.Size = new System.Drawing.Size(50, 55);
-            this.checkButton.Text = "Check";
-            this.checkButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.checkButton.ToolTipText = "Check Site";
-            this.checkButton.Click += new System.EventHandler(this.checkButton_Click);
             // 
             // urlTextBox
             // 
@@ -127,6 +89,7 @@
             // loopCheckBox
             // 
             this.loopCheckBox.AutoSize = true;
+            this.loopCheckBox.Enabled = false;
             this.loopCheckBox.Location = new System.Drawing.Point(12, 105);
             this.loopCheckBox.Name = "loopCheckBox";
             this.loopCheckBox.Size = new System.Drawing.Size(50, 17);
@@ -134,26 +97,6 @@
             this.loopCheckBox.Text = "Loop";
             this.loopCheckBox.UseVisualStyleBackColor = true;
             this.loopCheckBox.CheckedChanged += new System.EventHandler(this.loopCheckBox_CheckedChanged);
-            // 
-            // retryTimer
-            // 
-            this.retryTimer.Interval = 30;
-            this.retryTimer.Tick += new System.EventHandler(this.retryTimer_Tick);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripRetryLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 185);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(473, 22);
-            this.statusStrip1.TabIndex = 7;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripRetryLabel
-            // 
-            this.toolStripRetryLabel.Name = "toolStripRetryLabel";
-            this.toolStripRetryLabel.Size = new System.Drawing.Size(0, 17);
             // 
             // retryLabel
             // 
@@ -163,13 +106,80 @@
             this.retryLabel.Size = new System.Drawing.Size(0, 13);
             this.retryLabel.TabIndex = 6;
             // 
+            // statusStrip
+            // 
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripRetryLabel});
+            this.statusStrip.Location = new System.Drawing.Point(0, 185);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(473, 22);
+            this.statusStrip.TabIndex = 7;
+            this.statusStrip.Text = "statusStrip1";
+            // 
+            // toolStripRetryLabel
+            // 
+            this.toolStripRetryLabel.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.toolStripRetryLabel.Name = "toolStripRetryLabel";
+            this.toolStripRetryLabel.Size = new System.Drawing.Size(0, 17);
+            // 
+            // addUrlButton
+            // 
+            this.addUrlButton.AutoSize = false;
+            this.addUrlButton.Image = ((System.Drawing.Image)(resources.GetObject("addUrlButton.Image")));
+            this.addUrlButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.addUrlButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.addUrlButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.addUrlButton.Name = "addUrlButton";
+            this.addUrlButton.Size = new System.Drawing.Size(52, 55);
+            this.addUrlButton.Text = "Add URL";
+            this.addUrlButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.addUrlButton.Click += new System.EventHandler(this.addUrlButton_Click);
+            // 
+            // settingsButton
+            // 
+            this.settingsButton.AutoSize = false;
+            this.settingsButton.Image = ((System.Drawing.Image)(resources.GetObject("settingsButton.Image")));
+            this.settingsButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.settingsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(52, 55);
+            this.settingsButton.Text = "Settings";
+            this.settingsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            // 
+            // checkButton
+            // 
+            this.checkButton.AutoSize = false;
+            this.checkButton.Image = global::is_site_up.Resource.check;
+            this.checkButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.checkButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.checkButton.Name = "checkButton";
+            this.checkButton.Size = new System.Drawing.Size(52, 55);
+            this.checkButton.Text = "Check";
+            this.checkButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.checkButton.ToolTipText = "Check Site";
+            this.checkButton.Click += new System.EventHandler(this.checkButton_Click);
+            // 
+            // emailButton
+            // 
+            this.emailButton.AutoSize = false;
+            this.emailButton.Enabled = false;
+            this.emailButton.Image = global::is_site_up.Resource.mail;
+            this.emailButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.emailButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.emailButton.Name = "emailButton";
+            this.emailButton.Size = new System.Drawing.Size(52, 55);
+            this.emailButton.Text = "Email";
+            this.emailButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.emailButton.ToolTipText = "Send Email";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
             this.ClientSize = new System.Drawing.Size(473, 207);
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.retryLabel);
             this.Controls.Add(this.loopCheckBox);
             this.Controls.Add(this.statusButton);
@@ -182,8 +192,8 @@
             this.Text = "Is Site Up";
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,10 +209,10 @@
         private System.Windows.Forms.ToolStripButton checkButton;
         private System.Windows.Forms.Button statusButton;
         private System.Windows.Forms.CheckBox loopCheckBox;
-        private System.Windows.Forms.Timer retryTimer;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripRetryLabel;
         private System.Windows.Forms.Label retryLabel;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripRetryLabel;
+        private System.Windows.Forms.ToolStripButton emailButton;
     }
 }
 

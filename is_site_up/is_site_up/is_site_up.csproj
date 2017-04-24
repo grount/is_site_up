@@ -51,6 +51,7 @@
     <Compile Include="AddUrlForm.Designer.cs">
       <DependentUpon>AddUrlForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Email.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +115,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mail.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

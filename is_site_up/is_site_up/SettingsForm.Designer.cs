@@ -30,13 +30,16 @@
         {
             this.generalTabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.retrySecondsTrackBar = new System.Windows.Forms.TrackBar();
             this.displayTrackBarLabel = new System.Windows.Forms.Label();
+            this.retrySecondsTrackBar = new System.Windows.Forms.TrackBar();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.emailTextBox = new System.Windows.Forms.TextBox();
             this.generalTabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.retrySecondsTrackBar)).BeginInit();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // generalTabControl
@@ -63,24 +66,15 @@
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // displayTrackBarLabel
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(426, 197);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Email";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(149, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Retry after amount of seconds";
+            this.displayTrackBarLabel.AutoSize = true;
+            this.displayTrackBarLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.displayTrackBarLabel.Location = new System.Drawing.Point(348, 10);
+            this.displayTrackBarLabel.Name = "displayTrackBarLabel";
+            this.displayTrackBarLabel.Size = new System.Drawing.Size(21, 15);
+            this.displayTrackBarLabel.TabIndex = 11;
+            this.displayTrackBarLabel.Text = "10";
             // 
             // retrySecondsTrackBar
             // 
@@ -95,15 +89,43 @@
             this.retrySecondsTrackBar.Value = 10;
             this.retrySecondsTrackBar.ValueChanged += new System.EventHandler(this.retrySecondsTrackBar_ValueChanged);
             // 
-            // displayTrackBarLabel
+            // label1
             // 
-            this.displayTrackBarLabel.AutoSize = true;
-            this.displayTrackBarLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.displayTrackBarLabel.Location = new System.Drawing.Point(348, 10);
-            this.displayTrackBarLabel.Name = "displayTrackBarLabel";
-            this.displayTrackBarLabel.Size = new System.Drawing.Size(21, 15);
-            this.displayTrackBarLabel.TabIndex = 11;
-            this.displayTrackBarLabel.Text = "10";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(149, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Retry after amount of seconds";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.emailTextBox);
+            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(426, 197);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Email";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(4, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Email Address: ";
+            // 
+            // emailTextBox
+            // 
+            this.emailTextBox.Location = new System.Drawing.Point(90, 3);
+            this.emailTextBox.Name = "emailTextBox";
+            this.emailTextBox.Size = new System.Drawing.Size(212, 20);
+            this.emailTextBox.TabIndex = 1;
+            this.emailTextBox.TextChanged += new System.EventHandler(this.emailTextBox_TextChanged);
             // 
             // SettingsForm
             // 
@@ -118,6 +140,8 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.retrySecondsTrackBar)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -130,5 +154,7 @@
         private System.Windows.Forms.TrackBar retrySecondsTrackBar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label displayTrackBarLabel;
+        private System.Windows.Forms.TextBox emailTextBox;
+        private System.Windows.Forms.Label label2;
     }
 }

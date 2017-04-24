@@ -12,7 +12,8 @@ namespace is_site_up
 {
     public partial class SettingsForm : Form
     {
-        public int m_retrySeconds { get; set; }
+        public int m_retrySeconds { get; private set; }
+        public string m_EmailAddress { get; private set; }
 
         public SettingsForm()
         {
@@ -24,6 +25,11 @@ namespace is_site_up
         { 
             displayTrackBarLabel.Text = retrySecondsTrackBar.Value.ToString();
             m_retrySeconds = retrySecondsTrackBar.Value;
+        }
+
+        private void emailTextBox_TextChanged(object sender, EventArgs e)
+        {
+            m_EmailAddress = emailTextBox.Text;
         }
     }
 }
