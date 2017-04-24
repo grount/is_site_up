@@ -34,6 +34,7 @@
             this.settingsButton = new System.Windows.Forms.ToolStripButton();
             this.checkButton = new System.Windows.Forms.ToolStripButton();
             this.emailButton = new System.Windows.Forms.ToolStripButton();
+            this.helpButton = new System.Windows.Forms.ToolStripButton();
             this.urlTextBox = new System.Windows.Forms.TextBox();
             this.siteUrlLabel = new System.Windows.Forms.Label();
             this.statusButton = new System.Windows.Forms.Button();
@@ -52,11 +53,12 @@
             this.addUrlButton,
             this.settingsButton,
             this.checkButton,
-            this.emailButton});
+            this.emailButton,
+            this.helpButton});
             this.toolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(473, 58);
+            this.toolStrip.Size = new System.Drawing.Size(469, 58);
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip";
             // 
@@ -112,6 +114,19 @@
             this.emailButton.ToolTipText = "Send Email";
             this.emailButton.Click += new System.EventHandler(this.emailButton_Click);
             // 
+            // helpButton
+            // 
+            this.helpButton.AutoSize = false;
+            this.helpButton.Image = ((System.Drawing.Image)(resources.GetObject("helpButton.Image")));
+            this.helpButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.helpButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.helpButton.Name = "helpButton";
+            this.helpButton.Size = new System.Drawing.Size(52, 55);
+            this.helpButton.Text = "Help";
+            this.helpButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.helpButton.ToolTipText = "Help";
+            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
+            // 
             // urlTextBox
             // 
             this.urlTextBox.Location = new System.Drawing.Point(56, 79);
@@ -142,7 +157,7 @@
             // 
             this.loopCheckBox.AutoSize = true;
             this.loopCheckBox.Enabled = false;
-            this.loopCheckBox.Location = new System.Drawing.Point(12, 105);
+            this.loopCheckBox.Location = new System.Drawing.Point(5, 105);
             this.loopCheckBox.Name = "loopCheckBox";
             this.loopCheckBox.Size = new System.Drawing.Size(50, 17);
             this.loopCheckBox.TabIndex = 5;
@@ -162,9 +177,9 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripRetryLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 185);
+            this.statusStrip.Location = new System.Drawing.Point(0, 144);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(473, 22);
+            this.statusStrip.Size = new System.Drawing.Size(469, 22);
             this.statusStrip.TabIndex = 7;
             this.statusStrip.Text = "statusStrip1";
             // 
@@ -179,7 +194,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.ClientSize = new System.Drawing.Size(473, 207);
+            this.ClientSize = new System.Drawing.Size(469, 166);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.retryLabel);
             this.Controls.Add(this.loopCheckBox);
@@ -188,6 +203,9 @@
             this.Controls.Add(this.urlTextBox);
             this.Controls.Add(this.toolStrip);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Is Site Up";
@@ -214,6 +232,7 @@
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel toolStripRetryLabel;
         private System.Windows.Forms.ToolStripButton emailButton;
+        private System.Windows.Forms.ToolStripButton helpButton;
     }
 }
 

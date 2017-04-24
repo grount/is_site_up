@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddUrlForm));
             this.enterUrlLabel = new System.Windows.Forms.Label();
             this.urlTextBox = new System.Windows.Forms.TextBox();
             this.okButton = new System.Windows.Forms.Button();
@@ -37,7 +38,7 @@
             // enterUrlLabel
             // 
             this.enterUrlLabel.AutoSize = true;
-            this.enterUrlLabel.Location = new System.Drawing.Point(13, 8);
+            this.enterUrlLabel.Location = new System.Drawing.Point(13, 14);
             this.enterUrlLabel.Name = "enterUrlLabel";
             this.enterUrlLabel.Size = new System.Drawing.Size(57, 13);
             this.enterUrlLabel.TabIndex = 0;
@@ -45,7 +46,7 @@
             // 
             // urlTextBox
             // 
-            this.urlTextBox.Location = new System.Drawing.Point(77, 5);
+            this.urlTextBox.Location = new System.Drawing.Point(77, 11);
             this.urlTextBox.Name = "urlTextBox";
             this.urlTextBox.Size = new System.Drawing.Size(330, 20);
             this.urlTextBox.TabIndex = 1;
@@ -54,7 +55,7 @@
             // okButton
             // 
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.okButton.Location = new System.Drawing.Point(134, 31);
+            this.okButton.Location = new System.Drawing.Point(134, 37);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 2;
@@ -65,7 +66,7 @@
             // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(215, 31);
+            this.cancelButton.Location = new System.Drawing.Point(215, 37);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 3;
@@ -84,9 +85,10 @@
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.urlTextBox);
             this.Controls.Add(this.enterUrlLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddUrlForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "AddUrlForm";
+            this.Text = "Add URL";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.generalTabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.generalCancelButton = new System.Windows.Forms.Button();
+            this.generalOkButton = new System.Windows.Forms.Button();
             this.displayTrackBarLabel = new System.Windows.Forms.Label();
             this.retrySecondsTrackBar = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,8 +45,6 @@
             this.usernameLabel = new System.Windows.Forms.Label();
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.emailAddressLabel = new System.Windows.Forms.Label();
-            this.generalCancelButton = new System.Windows.Forms.Button();
-            this.generalOkButton = new System.Windows.Forms.Button();
             this.generalTabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.retrySecondsTrackBar)).BeginInit();
@@ -75,6 +76,27 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // generalCancelButton
+            // 
+            this.generalCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.generalCancelButton.Location = new System.Drawing.Point(195, 94);
+            this.generalCancelButton.Name = "generalCancelButton";
+            this.generalCancelButton.Size = new System.Drawing.Size(75, 23);
+            this.generalCancelButton.TabIndex = 13;
+            this.generalCancelButton.Text = "Cancel";
+            this.generalCancelButton.UseVisualStyleBackColor = true;
+            // 
+            // generalOkButton
+            // 
+            this.generalOkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.generalOkButton.Location = new System.Drawing.Point(114, 94);
+            this.generalOkButton.Name = "generalOkButton";
+            this.generalOkButton.Size = new System.Drawing.Size(75, 23);
+            this.generalOkButton.TabIndex = 12;
+            this.generalOkButton.Text = "OK";
+            this.generalOkButton.UseVisualStyleBackColor = true;
+            this.generalOkButton.Click += new System.EventHandler(this.generalOkButton_Click);
             // 
             // displayTrackBarLabel
             // 
@@ -198,33 +220,13 @@
             this.emailAddressLabel.TabIndex = 0;
             this.emailAddressLabel.Text = "Email Address: ";
             // 
-            // generalCancelButton
-            // 
-            this.generalCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.generalCancelButton.Location = new System.Drawing.Point(195, 94);
-            this.generalCancelButton.Name = "generalCancelButton";
-            this.generalCancelButton.Size = new System.Drawing.Size(75, 23);
-            this.generalCancelButton.TabIndex = 13;
-            this.generalCancelButton.Text = "Cancel";
-            this.generalCancelButton.UseVisualStyleBackColor = true;
-            // 
-            // generalOkButton
-            // 
-            this.generalOkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.generalOkButton.Location = new System.Drawing.Point(114, 94);
-            this.generalOkButton.Name = "generalOkButton";
-            this.generalOkButton.Size = new System.Drawing.Size(75, 23);
-            this.generalOkButton.TabIndex = 12;
-            this.generalOkButton.Text = "OK";
-            this.generalOkButton.UseVisualStyleBackColor = true;
-            this.generalOkButton.Click += new System.EventHandler(this.generalOkButton_Click);
-            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(399, 152);
             this.Controls.Add(this.generalTabControl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Settings";

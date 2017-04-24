@@ -22,6 +22,7 @@ namespace is_site_up
         private bool m_IsLoopClicked;
         private readonly bool m_IsSiteUp;
         private Email m_Email;
+        private readonly Color m_siteStatusColor;
 
         public MainWindow()
         {
@@ -33,6 +34,7 @@ namespace is_site_up
             m_RetrySeconds = m_SettingsForm.m_retrySeconds;
             m_IsLoopClicked = loopCheckBox.Checked;
             m_IsSiteUp = false;
+            m_siteStatusColor = statusButton.BackColor;
         }
 
         private void addUrlButton_Click(object sender, EventArgs e)
@@ -40,12 +42,13 @@ namespace is_site_up
             AddUrlForm urlForm = new AddUrlForm();
             urlForm.ShowDialog();
             m_IsUrlSelected = urlForm.m_IsUrlSelected;
-
+            
             if (m_IsUrlSelected)
             {
                 m_Url = urlForm.m_Url;
                 urlTextBox.Text = m_Url;
                 m_UrlCheck.m_Url = m_Url;
+                statusButton.BackColor = m_siteStatusColor;
             }
         }
 
@@ -138,6 +141,13 @@ namespace is_site_up
         {
             m_Email = new Email(m_SettingsForm.m_EmailAddress, m_Url, m_SettingsForm.m_UserName, m_SettingsForm.m_Password);
             m_Email.SendEmail();
+        }
+
+        private void helpButton_Click(object sender, EventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+
+            helpForm.ShowDialog();
         }
     }
 }
