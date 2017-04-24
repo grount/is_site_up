@@ -18,10 +18,10 @@ namespace is_site_up
         private bool m_IsUrlSelected;
         private readonly UrlCheck m_UrlCheck;
         private readonly SettingsForm m_SettingsForm;
-        private readonly int m_RetrySeconds;
+        private int m_RetrySeconds;
         private bool m_IsLoopClicked;
         private readonly bool m_IsSiteUp;
-        private readonly Email m_email;
+        private Email m_Email;
 
         public MainWindow()
         {
@@ -33,7 +33,6 @@ namespace is_site_up
             m_RetrySeconds = m_SettingsForm.m_retrySeconds;
             m_IsLoopClicked = loopCheckBox.Checked;
             m_IsSiteUp = false;
-            m_email = new Email(m_SettingsForm.m_EmailAddress);
         }
 
         private void addUrlButton_Click(object sender, EventArgs e)
@@ -63,6 +62,7 @@ namespace is_site_up
 
         private void checkTheSite()
         {
+
             if (m_IsUrlSelected)
             {
                 bool isSiteUp = m_UrlCheck.CheckIfSiteIsUp();
@@ -79,7 +79,7 @@ namespace is_site_up
         private void loopCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             m_IsLoopClicked = loopCheckBox.Checked;
-            emailButton.Enabled = true;
+            emailButton.Enabled = loopCheckBox.Checked;
         }
 
         private Task updateRetryTimeLeftAsync()
@@ -89,6 +89,8 @@ namespace is_site_up
 
         private async void updateRetryTimeLeft()
         {
+            m_RetrySeconds = m_SettingsForm.m_retrySeconds;
+
             for (int i = m_RetrySeconds; i >= 0; i--)
             {
                 if (retryLabel.InvokeRequired)
@@ -130,6 +132,12 @@ namespace is_site_up
                 
             }
         
+        }
+
+        private void emailButton_Click(object sender, EventArgs e) // TODO change it to a bool var to notify when the site is up.
+        {
+            m_Email = new Email(m_SettingsForm.m_EmailAddress, m_Url, m_SettingsForm.m_UserName, m_SettingsForm.m_Password);
+            m_Email.SendEmail();
         }
     }
 }

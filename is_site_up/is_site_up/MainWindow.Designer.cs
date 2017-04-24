@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.addUrlButton = new System.Windows.Forms.ToolStripButton();
+            this.settingsButton = new System.Windows.Forms.ToolStripButton();
+            this.checkButton = new System.Windows.Forms.ToolStripButton();
+            this.emailButton = new System.Windows.Forms.ToolStripButton();
             this.urlTextBox = new System.Windows.Forms.TextBox();
             this.siteUrlLabel = new System.Windows.Forms.Label();
             this.statusButton = new System.Windows.Forms.Button();
@@ -37,10 +41,6 @@
             this.retryLabel = new System.Windows.Forms.Label();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripRetryLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.addUrlButton = new System.Windows.Forms.ToolStripButton();
-            this.settingsButton = new System.Windows.Forms.ToolStripButton();
-            this.checkButton = new System.Windows.Forms.ToolStripButton();
-            this.emailButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -59,6 +59,58 @@
             this.toolStrip.Size = new System.Drawing.Size(473, 58);
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip";
+            // 
+            // addUrlButton
+            // 
+            this.addUrlButton.AutoSize = false;
+            this.addUrlButton.Image = ((System.Drawing.Image)(resources.GetObject("addUrlButton.Image")));
+            this.addUrlButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.addUrlButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.addUrlButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.addUrlButton.Name = "addUrlButton";
+            this.addUrlButton.Size = new System.Drawing.Size(52, 55);
+            this.addUrlButton.Text = "Add URL";
+            this.addUrlButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.addUrlButton.Click += new System.EventHandler(this.addUrlButton_Click);
+            // 
+            // settingsButton
+            // 
+            this.settingsButton.AutoSize = false;
+            this.settingsButton.Image = ((System.Drawing.Image)(resources.GetObject("settingsButton.Image")));
+            this.settingsButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.settingsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(52, 55);
+            this.settingsButton.Text = "Settings";
+            this.settingsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            // 
+            // checkButton
+            // 
+            this.checkButton.AutoSize = false;
+            this.checkButton.Image = global::is_site_up.Resource.check;
+            this.checkButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.checkButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.checkButton.Name = "checkButton";
+            this.checkButton.Size = new System.Drawing.Size(52, 55);
+            this.checkButton.Text = "Check";
+            this.checkButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.checkButton.ToolTipText = "Check Site";
+            this.checkButton.Click += new System.EventHandler(this.checkButton_Click);
+            // 
+            // emailButton
+            // 
+            this.emailButton.AutoSize = false;
+            this.emailButton.Enabled = false;
+            this.emailButton.Image = global::is_site_up.Resource.mail;
+            this.emailButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.emailButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.emailButton.Name = "emailButton";
+            this.emailButton.Size = new System.Drawing.Size(52, 55);
+            this.emailButton.Text = "Email";
+            this.emailButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.emailButton.ToolTipText = "Send Email";
+            this.emailButton.Click += new System.EventHandler(this.emailButton_Click);
             // 
             // urlTextBox
             // 
@@ -121,57 +173,6 @@
             this.toolStripRetryLabel.BackColor = System.Drawing.SystemColors.MenuBar;
             this.toolStripRetryLabel.Name = "toolStripRetryLabel";
             this.toolStripRetryLabel.Size = new System.Drawing.Size(0, 17);
-            // 
-            // addUrlButton
-            // 
-            this.addUrlButton.AutoSize = false;
-            this.addUrlButton.Image = ((System.Drawing.Image)(resources.GetObject("addUrlButton.Image")));
-            this.addUrlButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.addUrlButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.addUrlButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.addUrlButton.Name = "addUrlButton";
-            this.addUrlButton.Size = new System.Drawing.Size(52, 55);
-            this.addUrlButton.Text = "Add URL";
-            this.addUrlButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.addUrlButton.Click += new System.EventHandler(this.addUrlButton_Click);
-            // 
-            // settingsButton
-            // 
-            this.settingsButton.AutoSize = false;
-            this.settingsButton.Image = ((System.Drawing.Image)(resources.GetObject("settingsButton.Image")));
-            this.settingsButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.settingsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(52, 55);
-            this.settingsButton.Text = "Settings";
-            this.settingsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
-            // 
-            // checkButton
-            // 
-            this.checkButton.AutoSize = false;
-            this.checkButton.Image = global::is_site_up.Resource.check;
-            this.checkButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.checkButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.checkButton.Name = "checkButton";
-            this.checkButton.Size = new System.Drawing.Size(52, 55);
-            this.checkButton.Text = "Check";
-            this.checkButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.checkButton.ToolTipText = "Check Site";
-            this.checkButton.Click += new System.EventHandler(this.checkButton_Click);
-            // 
-            // emailButton
-            // 
-            this.emailButton.AutoSize = false;
-            this.emailButton.Enabled = false;
-            this.emailButton.Image = global::is_site_up.Resource.mail;
-            this.emailButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.emailButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.emailButton.Name = "emailButton";
-            this.emailButton.Size = new System.Drawing.Size(52, 55);
-            this.emailButton.Text = "Email";
-            this.emailButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.emailButton.ToolTipText = "Send Email";
             // 
             // MainWindow
             // 
